@@ -74,18 +74,32 @@ namespace SSO_Practica05_RR
 		{
 			switch (e.Key)
 			{
-				case Key.E:	//Entrada salida
+				case Key.E: //Entrada salida
+					esBloqueado = true;
 					break;
 				case Key.W:	//Error
 					break;
-				case Key.P:	//Pausa
+				case Key.P: //Pausa
+					esPausa = true;
+					dt.Stop();
 					break;
 				case Key.C: //Continuar
+					if (esPausa)
+						dt.Start();
 					break;
 				case Key.U: //Nuevo
 					crearProceso();
 					break;
 				case Key.B: //BCP
+					var lista = new List<Proceso>();
+
+					lista = terminados.Concat(ejecucion.Concat(listos.Concat(bloqueados.Concat(nuevos)))).ToList();
+					dt.Stop();
+					Hide();
+					new BCPWindow(lista).ShowDialog();
+					Show();
+					dt.Start();
+
 					break;
 				default:
 					break;
@@ -127,8 +141,6 @@ namespace SSO_Practica05_RR
 
 		private void dt_Tick(object sender, EventArgs e)
 		{
-			segundos++;
-
 			procesosEnMemoria = listos.Count + ejecucion.Count + bloqueados.Count;
 
 			procesaEjecucion();
@@ -136,6 +148,8 @@ namespace SSO_Practica05_RR
 			procesaContadores();
 
 			actualizaGrid();
+
+			segundos++;
 		}
 
 		private void resetCuanto() { cuantoRestante = CUANTO_VALOR; }

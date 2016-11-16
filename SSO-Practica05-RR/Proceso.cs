@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SSO_Practica05_RR
 {
-	class Proceso
+	public class Proceso
 	{
 		public static int idProceso = 1;
 
