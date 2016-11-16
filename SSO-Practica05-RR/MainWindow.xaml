@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SSO_Practica05_RR"
 		KeyDown="Window_KeyDown"
         mc:Ignorable="d"
-        Title="MainWindow" Height="620" Width="1350">
+        Title="MainWindow" Height="620" Width="1450">
 	<Grid>
 		<GroupBox x:Name="groupBox" Header="Nuevo proceso" HorizontalAlignment="Left" Height="121" Margin="10,10,0,0" VerticalAlignment="Top" Width="237">
 			<Grid>
@@ -15,7 +15,7 @@
 				<TextBlock x:Name="Cuanto" HorizontalAlignment="Left" Margin="8,15,0,0" TextWrapping="Wrap" Text="Cuanto" VerticalAlignment="Top"/>
 				<TextBlock x:Name="numProcesos" HorizontalAlignment="Left" Margin="8,42,0,0" TextWrapping="Wrap" Text="Numero procesos" VerticalAlignment="Top"/>
 				<DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="392,19,0,0" VerticalAlignment="Top" Height="39" Width="387"/>
-				<Button x:Name="btnIniciar" Content="Crear" HorizontalAlignment="Left" Margin="122,71,0,0" VerticalAlignment="Top" Width="75" Click="btnIniciar_Click"/>
+				<Button x:Name="btnCrear" Content="Crear" HorizontalAlignment="Left" Margin="122,71,0,0" VerticalAlignment="Top" Width="75" Click="btnCrear_Click"/>
 			</Grid>
 		</GroupBox>
 		<GroupBox x:Name="groupBox1" Header="Ejecucion" HorizontalAlignment="Left" Margin="272,10,0,0" VerticalAlignment="Top" Height="80" Width="505">
@@ -31,27 +31,27 @@
 				<Button x:Name="btnIniciarCronometro" Content="Iniciar cronometro" HorizontalAlignment="Left" Margin="107,118,0,0" VerticalAlignment="Top" Width="107" Click="btnIniciarCronometro_Click"/>
 				<Label x:Name="lbl5" Content="Tiempo transcurrido:" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 				<TextBox x:Name="txbTranscurrido" HorizontalAlignment="Left" Height="Auto" Margin="120,30,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="Auto" FontSize="18" IsEnabled="False"/>
-				<Label x:Name="lbl6" Content="Tiempo restante:" Margin="0,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-				<TextBox x:Name="txbRestante" HorizontalAlignment="Left" Height="Auto" Margin="120,60,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="Auto" FontSize="18" IsEnabled="False"/>
+				<Label x:Name="lbl6" Content="Cuanto:" Margin="0,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+				<TextBox x:Name="txbCuanto" HorizontalAlignment="Left" Height="Auto" Margin="120,60,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="Auto" FontSize="18" IsEnabled="False"/>
 				<Label x:Name="lbl7" Content="Maximo global:" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 				<TextBox x:Name="txbMaximoGlobal" HorizontalAlignment="Left" Height="Auto" Margin="120,90,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="Auto" FontSize="18" IsEnabled="False"/>
 			</Grid>
 		</GroupBox>
 
-		<GroupBox x:Name="grbNuevos" Header="Nuevos" HorizontalAlignment="Left" Height="207" Margin="255,114,0,0" VerticalAlignment="Top" Width="505">
-			<DataGrid x:Name="dgvNuevos" HorizontalAlignment="Left" Height="152" Margin="4,11,-2,0" VerticalAlignment="Top" Width="491" IsReadOnly="True" />
+		<GroupBox x:Name="grbNuevos" Header="Nuevos" HorizontalAlignment="Left" Height="207" Margin="255,114,0,0" VerticalAlignment="Top" Width="555">
+			<DataGrid x:Name="dgvNuevos" HorizontalAlignment="Left" Height="152" Margin="4,11,-2,0" VerticalAlignment="Top" Width="531" IsReadOnly="True" />
 		</GroupBox>
 
-		<GroupBox x:Name="grbListos" Header="Bloqueados" HorizontalAlignment="Left" Height="207" Margin="255,278,0,0" VerticalAlignment="Top" Width="505">
-			<DataGrid x:Name="dgvBloqueados" HorizontalAlignment="Left" Height="152" Margin="4,27,-2,0" VerticalAlignment="Top" Width="491" IsReadOnly="True"/>
+		<GroupBox x:Name="grbListos" Header="Bloqueados" HorizontalAlignment="Left" Height="207" Margin="255,300,0,0" VerticalAlignment="Top" Width="555">
+			<DataGrid x:Name="dgvBloqueados" HorizontalAlignment="Left" Height="152" Margin="4,27,-2,0" VerticalAlignment="Top" Width="521" IsReadOnly="True"/>
 		</GroupBox>
 
-		<GroupBox x:Name="grbBloqueados" Header="Listos" HorizontalAlignment="Right" Height="207" Margin="0,114,49,0" VerticalAlignment="Top" Width="505">
-			<DataGrid x:Name="dgvListos"    HorizontalAlignment="Right" Height="152" Margin="4,11,-2,0" VerticalAlignment="Top" Width="491" IsReadOnly="True" />
+		<GroupBox x:Name="grbBloqueados" Header="Listos" HorizontalAlignment="Right" Height="207" Margin="0,114,49,0" VerticalAlignment="Top" Width="555">
+			<DataGrid x:Name="dgvListos"    HorizontalAlignment="Right" Height="152" Margin="4,11,-2,0" VerticalAlignment="Top" Width="521" IsReadOnly="True" />
 		</GroupBox>
 
-		<GroupBox x:Name="grbTerminados" Header="Terminados" HorizontalAlignment="Right" Height="207" Margin="0,278,49,0" VerticalAlignment="Top" Width="505">
-			<DataGrid x:Name="dgvTerminados" HorizontalAlignment="Right" Height="152" Margin="0,27,-2,0" VerticalAlignment="Top" Width="491" IsReadOnly="True"/>
+		<GroupBox x:Name="grbTerminados" Header="Terminados" HorizontalAlignment="Right" Height="207" Margin="0,306,49,0" VerticalAlignment="Top" Width="555">
+			<DataGrid x:Name="dgvTerminados" HorizontalAlignment="Right" Height="152" Margin="0,27,-2,0" VerticalAlignment="Top" Width="521" IsReadOnly="True"/>
 		</GroupBox>
 		
 	</Grid>

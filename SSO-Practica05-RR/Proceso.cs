@@ -18,6 +18,7 @@ namespace SSO_Practica05_RR
 		public string Res { get; set; }
 		public bool Termino { get; set; }
 		public int TME { get; set; }
+		public int TR { get; set; }		
 		public int TL { get; set; }
 		public int TFin { get; set; }
 		public int TRet { get; set; }
@@ -35,9 +36,16 @@ namespace SSO_Practica05_RR
 			this.Op = Op;
 			this.Op1 = Op1;
 			this.Op2 = Op2;
-			this.TME = ETA;
+			this.TR = this.TME = ETA;
 			this.Termino = false;
 			idProceso++;
+		}
+
+		public void terminoError(int tiempoActual)
+		{
+			termino(tiempoActual);
+			Termino = true;
+			Res = "Error";			
 		}
 
 		public void termino(int tiempoActual)
