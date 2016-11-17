@@ -8,6 +8,8 @@ namespace SSO_Practica05_RR
 {
 	public class Proceso
 	{
+		const int TIEMPO_BLOQUEADO = 8;
+
 		public static int idProceso = 1;
 
 		public int Id { get; set; }
@@ -66,6 +68,11 @@ namespace SSO_Practica05_RR
 
 
 			//this.TResp = servidoPrimeraVez - TL;
+		}
+
+		public void bloquea(int tiempoActual)
+		{
+			Bloq = TIEMPO_BLOQUEADO;
 		}
 
 		public void resolverEcuacion()

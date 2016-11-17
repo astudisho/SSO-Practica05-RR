@@ -66,8 +66,6 @@ namespace SSO_Practica05_RR
 		{
 			if (listos.Count > C_ZERO)
 				ejecucion.Add(listos[C_ZERO]);
-
-
 		}
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -76,8 +74,21 @@ namespace SSO_Practica05_RR
 			{
 				case Key.E: //Entrada salida
 					esBloqueado = true;
+					if(ejecucion.Count > C_ZERO)
+					{
+						ejecucion[C_ZERO].bloquea(segundos);
+						bloqueados.Add(ejecucion[C_ZERO]);
+						ejecucion.RemoveAt(C_ZERO);
+					}
 					break;
-				case Key.W:	//Error
+				case Key.W: //Error
+					esError = true;
+					if(ejecucion.Count > C_ZERO)
+					{
+						ejecucion[C_ZERO].terminoError(segundos);
+						terminados.Add(ejecucion[C_ZERO]);
+						ejecucion.RemoveAt(C_ZERO);
+					}
 					break;
 				case Key.P: //Pausa
 					esPausa = true;
@@ -92,7 +103,6 @@ namespace SSO_Practica05_RR
 					break;
 				case Key.B: //BCP
 					var lista = new List<Proceso>();
-
 					lista = terminados.Concat(ejecucion.Concat(listos.Concat(bloqueados.Concat(nuevos)))).ToList();
 					dt.Stop();
 					Hide();
@@ -146,6 +156,7 @@ namespace SSO_Practica05_RR
 			procesaEjecucion();
 			procesaListos();
 			procesaContadores();
+			procesaBloqueados();
 
 			actualizaGrid();
 
@@ -158,7 +169,7 @@ namespace SSO_Practica05_RR
 		{
 			txbCronometro.Text = segsToTime(segundos);
 			txbMaximoGlobal.Text = segsToTime(maximoGlobal);
-			txbCuanto.Text = cuantoRestante.ToString();
+			txbCuanto.Text = segsToTime(cuantoRestante);
 		}
 
 		private void btnIniciarCronometro_Click(object sender, EventArgs e)
@@ -239,10 +250,11 @@ namespace SSO_Practica05_RR
 
 		private void procesaListos()
 		{
-			foreach (var proceso in listos)
+			listos.ForEach(x => x.TEsp++);
+			/*foreach (var proceso in listos)
 			{
 				proceso.TEsp++;
-			}
+			}*/
 
 			if (nuevos.Count > C_ZERO)
 			{
@@ -264,6 +276,15 @@ namespace SSO_Practica05_RR
 					nuevos.RemoveRange(C_ZERO, auxNum);
 				}
 			}
+		}
+
+		private void procesaBloqueados()
+		{
+			listos.AddRange(bloqueados.Where(x => x.Bloq <= C_ZERO));
+			//listos.Concat(bloqueados.Where(x => x.Bloq <= C_ZERO));
+			bloqueados.RemoveAll( x=> x.Bloq <= C_ZERO );
+
+			bloqueados.ForEach(x => x.Bloq--);
 		}
 	}
 }
