@@ -321,6 +321,7 @@ namespace SSO_Practica05_RR
 
 					listos.AddRange(listaAux);
 					nuevos.RemoveRange(C_ZERO, auxNum);
+					listaAux.ForEach(x => x.TL = segundos);
 				}
 			}
 		}
