@@ -66,16 +66,16 @@ namespace SSO_Practica05_RR
 			poblarCombos();
 
 			//Practica 02
-			txbCuanto.Visibility = Visibility.Hidden;
+			//txbCuanto.Visibility = Visibility.Hidden;
 			txbMaximoGlobal.Visibility = Visibility.Hidden;
 			txbTranscurrido.Visibility = Visibility.Hidden;
 
-			lblCuanto.Visibility = Visibility.Hidden;
+			//lblCuanto.Visibility = Visibility.Hidden;
 			lbl5.Visibility = Visibility.Hidden;
-			lbl6.Visibility = Visibility.Hidden;
+			//Slbl6.Visibility = Visibility.Hidden;
 			lbl7.Visibility = Visibility.Hidden;
 
-			cmbCuanto.Visibility = Visibility.Hidden;
+			//cmbCuanto.Visibility = Visibility.Hidden;
 
 			//Practica03
 		}
@@ -194,10 +194,11 @@ namespace SSO_Practica05_RR
 		{
 			procesosEnMemoria = listos.Count + ejecucion.Count + bloqueados.Count;
 
+			procesaCuanto();
 			procesaEjecucion();
 			procesaListos();
-			procesaContadores();
 			procesaBloqueados();
+			procesaContadores();
 
 			actualizaGrid();
 
@@ -331,6 +332,23 @@ namespace SSO_Practica05_RR
 			bloqueados.RemoveAll( x=> x.Bloq <= C_ZERO );
 
 			bloqueados.ForEach(  x => { x.Bloq--; x.TEsp++; } );
+		}
+
+		private void procesaCuanto()
+		{
+			if( cuantoRestante <= C_ZERO )
+			{
+				if ( ejecucion.Count > C_ZERO )
+				{
+					listos.Add(ejecucion[C_ZERO]);
+					ejecucion.RemoveAt(C_ZERO);
+				}
+				cuantoRestante = CUANTO_VALOR;
+			}
+			else
+			{
+				cuantoRestante--;
+			}
 		}
 	}
 }
