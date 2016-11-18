@@ -76,6 +76,8 @@ namespace SSO_Practica05_RR
 			lbl7.Visibility = Visibility.Hidden;
 
 			cmbCuanto.Visibility = Visibility.Hidden;
+
+			//Practica03
 		}
 
 		private void ejecutarSiguiente()
