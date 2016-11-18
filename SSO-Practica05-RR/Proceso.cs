@@ -40,6 +40,7 @@ namespace SSO_Practica05_RR
 			this.Op2 = Op2;
 			this.TR = this.TME = ETA;
 			this.Termino = false;
+			this.TResp = -1;
 			idProceso++;
 		}
 
@@ -55,12 +56,13 @@ namespace SSO_Practica05_RR
 			this.Termino = true;
 			this.TFin = tiempoActual;
 			this.TRet = this.TFin - this.TL;
+			resolverEcuacion();
 			//this.TResp = this.TL;
 		}
 
 		public void ejecuto(int tiempoActual)
 		{
-			if (servidoPrimeraVez == -1)
+			if (TResp == -1)
 			{
 				servidoPrimeraVez = tiempoActual;
 				this.TResp = servidoPrimeraVez;
@@ -72,7 +74,7 @@ namespace SSO_Practica05_RR
 
 		public void bloquea(int tiempoActual)
 		{
-			Bloq = TIEMPO_BLOQUEADO;
+			this.Bloq = TIEMPO_BLOQUEADO;
 		}
 
 		public void resolverEcuacion()

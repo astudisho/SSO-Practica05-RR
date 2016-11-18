@@ -40,7 +40,9 @@ namespace SSO_Practica05_RR
 
 			cmbCuanto.IsEnabled = false;
 			cmbNumeroProcesos.IsEnabled = false;
+
 			btnCrear.IsEnabled = false;
+			btnIniciarCronometro.IsEnabled = true;
 		}
 
 		public MainWindow()
@@ -58,18 +60,36 @@ namespace SSO_Practica05_RR
 			dt.Tick += dt_Tick;
 			dt.Interval = new TimeSpan(0, 0, 1);
 
+			btnIniciarCronometro.IsEnabled = false;
+
 			actualizaGrid();
 			poblarCombos();
+
+			//Practica 02
+			txbCuanto.Visibility = Visibility.Hidden;
+			txbMaximoGlobal.Visibility = Visibility.Hidden;
+			txbTranscurrido.Visibility = Visibility.Hidden;
+
+			lblCuanto.Visibility = Visibility.Hidden;
+			lbl5.Visibility = Visibility.Hidden;
+			lbl6.Visibility = Visibility.Hidden;
+			lbl7.Visibility = Visibility.Hidden;
+
+			cmbCuanto.Visibility = Visibility.Hidden;
 		}
 
 		private void ejecutarSiguiente()
 		{
 			if (listos.Count > C_ZERO)
+			{
 				ejecucion.Add(listos[C_ZERO]);
+				ejecucion[C_ZERO].ejecuto(segundos);
+			}
 		}
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)
 		{
+			unbindGrids();
 			switch (e.Key)
 			{
 				case Key.E: //Entrada salida
@@ -114,6 +134,7 @@ namespace SSO_Practica05_RR
 				default:
 					break;
 			}
+			bindGrids();
 		}
 
 
@@ -131,6 +152,24 @@ namespace SSO_Practica05_RR
 			dgvNuevos.ItemsSource = nuevos;
 			dgvTerminados.ItemsSource = terminados;
 
+		}
+
+		private void unbindGrids()
+		{
+			dgvTerminados.ItemsSource = null;
+			dgvNuevos.ItemsSource = null;
+			dgvBloqueados.ItemsSource = null;
+			dgvEjecucion.ItemsSource = null;
+			dgvListos.ItemsSource = null;
+		}
+
+		private void bindGrids()
+		{
+			dgvBloqueados.ItemsSource = bloqueados;
+			dgvEjecucion.ItemsSource = ejecucion;
+			dgvListos.ItemsSource = listos;
+			dgvNuevos.ItemsSource = nuevos;
+			dgvTerminados.ItemsSource = terminados;
 		}
 
 		private void poblarCombos()
@@ -161,6 +200,9 @@ namespace SSO_Practica05_RR
 			actualizaGrid();
 
 			segundos++;
+
+			if (listos.Count + bloqueados.Count + ejecucion.Count + nuevos.Count == C_ZERO)
+				dt.Stop();
 		}
 
 		private void resetCuanto() { cuantoRestante = CUANTO_VALOR; }
@@ -184,6 +226,7 @@ namespace SSO_Practica05_RR
 			foreach (var proceso in listos)
 			{
 				nuevos.Remove(proceso);
+				proceso.TL = segundos;
 			}
 
 			btnIniciarCronometro.IsEnabled = false;
@@ -228,6 +271,7 @@ namespace SSO_Practica05_RR
 			else if (ejecucion.Count <= C_ZERO && listos.Count > C_ZERO)
 			{
 				ejecucion.Add(listos[C_ZERO]);
+				listos[C_ZERO].ejecuto(segundos);
 				listos.RemoveAt(C_ZERO);
 			}
 			else
@@ -284,7 +328,7 @@ namespace SSO_Practica05_RR
 			//listos.Concat(bloqueados.Where(x => x.Bloq <= C_ZERO));
 			bloqueados.RemoveAll( x=> x.Bloq <= C_ZERO );
 
-			bloqueados.ForEach(x => x.Bloq--);
+			bloqueados.ForEach(  x => { x.Bloq--; x.TEsp++; } );
 		}
 	}
 }
