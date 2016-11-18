@@ -75,7 +75,7 @@ namespace SSO_Practica05_RR
 			lbl6.Visibility = Visibility.Hidden;
 			lbl7.Visibility = Visibility.Hidden;
 
-			cmbCuanto.Visibility = Visibility.Hidden;
+			//cmbCuanto.Visibility = Visibility.Hidden;
 		}
 
 		private void ejecutarSiguiente()
@@ -119,16 +119,16 @@ namespace SSO_Practica05_RR
 						dt.Start();
 					break;
 				case Key.U: //Nuevo
-					//crearProceso();
+					crearProceso();
 					break;
 				case Key.B: //BCP
-					//var lista = new List<Proceso>();
-					//lista = terminados.Concat(ejecucion.Concat(listos.Concat(bloqueados.Concat(nuevos)))).ToList();
-					//dt.Stop();
-					//Hide();
-					//new BCPWindow(lista).ShowDialog();
-					//Show();
-					//dt.Start();
+					var lista = new List<Proceso>();
+					lista = terminados.Concat(ejecucion.Concat(listos.Concat(bloqueados.Concat(nuevos)))).ToList();
+					dt.Stop();
+					Hide();
+					new BCPWindow(lista).ShowDialog();
+					Show();
+					dt.Start();
 
 					break;
 				default:
