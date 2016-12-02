@@ -56,6 +56,7 @@ namespace SSO_Practica05_RR
 			this.Termino = true;
 			this.TFin = tiempoActual;
 			this.TRet = this.TFin - this.TL;
+			this.TEsp = TRet - TSer;
 			resolverEcuacion();
 			//this.TResp = this.TL;
 		}

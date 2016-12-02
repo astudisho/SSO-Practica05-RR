@@ -39,7 +39,7 @@
 		</GroupBox>
 
 		<GroupBox x:Name="grbNuevos" Header="Nuevos" HorizontalAlignment="Left" Height="207" Margin="255,114,0,0" VerticalAlignment="Top" Width="555">
-			<DataGrid x:Name="dgvNuevos" HorizontalAlignment="Left" Height="152" Margin="4,11,-2,0" VerticalAlignment="Top" Width="531" IsReadOnly="True" />
+			<DataGrid x:Name="dgvNuevos" HorizontalAlignment="Left" Height="152" Margin="4,11,-2,0" VerticalAlignment="Top" Width="531" IsReadOnly="True"/>
 		</GroupBox>
 
 		<GroupBox x:Name="grbListos" Header="Bloqueados" HorizontalAlignment="Left" Height="207" Margin="255,300,0,0" VerticalAlignment="Top" Width="555">
