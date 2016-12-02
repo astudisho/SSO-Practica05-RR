@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SSO_Practica05_RR.Views"
         mc:Ignorable="d"
-        Title="Paginacion" Height="300" Width="620">
+        Title="Paginacion" Height="600" Width="620">
     <Grid>
-		<DataGrid x:Name="dgvPages1" HorizontalAlignment="Left" Height="249" Margin="20,10,0,0" VerticalAlignment="Top" Width="275"/>
-		<DataGrid x:Name="dgvPages2" HorizontalAlignment="Right" Height="249" Margin="20,10,20,10" VerticalAlignment="Top" Width="275"/>
+		<DataGrid x:Name="dgvPages1" HorizontalAlignment="Left" Height="540" Margin="20,10,0,0" VerticalAlignment="Top" Width="275"/>
+		<DataGrid x:Name="dgvPages2" HorizontalAlignment="Right" Height="540" Margin="20,10,20,10" VerticalAlignment="Top" Width="275"/>
 	</Grid>
 </Window>

@@ -20,19 +20,26 @@ namespace SSO_Practica05_RR.Views
 	/// </summary>
 	public partial class PagesWindow : Window
 	{
-		List<Marco> marcos;
+		List<Marco> listaMarcos;
 
-		public PagesWindow()
+		public PagesWindow( )
 		{
 			InitializeComponent();
 
-			marcos = new List<Marco>();
+			listaMarcos = new List<Marco>();
+
+			for (int i = 0; i < 32; i++)
+			{
+				listaMarcos.Add( new Marco(i) );
+			}
+
+			bindPages();
 		}
 
 		void bindPages()
 		{
-			dgvPages1.ItemsSource = marcos.Select(x => x.Numero_Marco < 16);
-			dgvPages2.ItemsSource = marcos.Select(x => x.Numero_Marco >= 16);
+			dgvPages1.ItemsSource = listaMarcos.Select(x => x.Numero_Marco < 16);
+			dgvPages2.ItemsSource = listaMarcos.Select(x => x.Numero_Marco >= 16);
 		}
 	}
 }

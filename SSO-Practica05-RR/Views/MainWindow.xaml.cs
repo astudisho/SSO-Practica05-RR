@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using SSO_Practica05_RR.Views;
+
 namespace SSO_Practica05_RR
 {
 	/// <summary>
@@ -131,7 +133,13 @@ namespace SSO_Practica05_RR
 					new BCPWindow(lista).ShowDialog();
 					Show();
 					dt.Start();
-
+					break;
+				case Key.T: //Pages
+					dt.Stop();
+					Hide();
+					new PagesWindow().ShowDialog();
+					Show();
+					dt.Start();
 					break;
 				default:
 					break;
